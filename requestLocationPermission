@@ -1,0 +1,29 @@
+private fun requestLocationPermission() {
+    if (ActivityCompat.shouldShowRequestPermissionRationale(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        )
+    ) {
+        // Menampilkan alasan mengapa aplikasi memerlukan izin lokasi
+        Snackbar.make(
+            findViewById(R.id.layout_main),
+            "Aplikasi ini memerlukan izin untuk mengakses lokasi pengguna.",
+            Snackbar.LENGTH_INDEFINITE
+        )
+            .setAction("OK") {
+                // Meminta izin lokasi
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+                )
+            }.show()
+    } else {
+        // Meminta izin lokasi
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
+        )
+    }
+}
